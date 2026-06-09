@@ -52,6 +52,11 @@
       gap: 24px;
       flex-wrap: wrap;
     }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
     .header-left h1 {
       font-size: 22px;
       font-weight: 700;
@@ -364,35 +369,29 @@
       color: var(--text-muted);
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       body { padding: 14px 12px 48px; }
       .page-header {
         flex-direction: column;
         align-items: flex-start;
-        padding: 20px 20px 20px;
+        padding: 20px;
         gap: 14px;
       }
-      /* override inline style trên header-left */
       .header-left {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
         width: 100%;
       }
-      .header-left img { height: 40px; }
-      .header-left h1 { font-size: 18px; }
-      .header-left p  { font-size: 12px; }
+      .header-left img { height: 38px; }
+      .header-left h1  { font-size: 20px; }
+      .header-left p   { font-size: 12px; }
       .header-meta { gap: 8px; }
       .meta-chip   { font-size: 11px; padding: 4px 10px; }
       .project-grid { grid-template-columns: 1fr; }
       .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-      /* table scroll ngang trên mobile */
-      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       table { min-width: 540px; }
-      /* team grid 2 cột trên mobile */
-      .team-grid { grid-template-columns: 1fr !important; }
-      /* budget table */
-      .budget-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .team-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 10px; }
     }
   </style>
@@ -401,7 +400,7 @@
 
 <!-- HEADER -->
 <header class="page-header">
-  <div class="header-left" style="display:flex;align-items:center;gap:20px;">
+  <div class="header-left">
     <img src="https://thaihoatravel.com/wp-content/uploads/2025/11/logo.png" alt="Thái Hòa Travel" style="height:52px;object-fit:contain;filter:brightness(0) invert(1);">
     <div>
       <h1>Báo Cáo Dự Án</h1>
