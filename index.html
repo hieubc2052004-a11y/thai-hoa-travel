@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thái Hòa Travel — Báo Cáo Dự Án T5–T7/2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base:        #0a0c10;
+      --bg-card:        #111520;
+      --bg-glass:       rgba(255,255,255,0.04);
+      --border:         rgba(255,255,255,0.08);
+      --accent:         #4f8ef7;
+      --accent-glow:    rgba(79,142,247,0.20);
+      --green:          #34d399;
+      --green-dim:      rgba(52,211,153,0.12);
+      --yellow:         #fbbf24;
+      --yellow-dim:     rgba(251,191,36,0.12);
+      --red:            #f87171;
+      --red-dim:        rgba(248,113,113,0.12);
+      --blue-dim:       rgba(79,142,247,0.12);
+      --purple:         #a78bfa;
+      --purple-dim:     rgba(167,139,250,0.12);
+      --text-primary:   #f0f2f7;
+      --text-secondary: #8892a4;
+      --text-muted:     #4a5568;
+      --radius:         14px;
+      --radius-sm:      8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 32px 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .header-left h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .header-left p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+    .header-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .meta-chip {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .meta-chip.accent { background: var(--blue-dim); border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto 36px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── KPI CARDS ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .kpi-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .kpi-card .value {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .kpi-card .sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+    .c-green  { color: var(--green); }
+    .c-yellow { color: var(--yellow); }
+    .c-blue   { color: var(--accent); }
+    .c-purple { color: var(--purple); }
+    .c-red    { color: var(--red); }
+
+    /* ── PROJECT CARDS ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .project-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .project-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .badge-green  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,211,153,.25); }
+    .badge-yellow { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(251,191,36,.25); }
+    .badge-blue   { background: var(--blue-dim); color: var(--accent); border: 1px solid rgba(79,142,247,.25); }
+    .badge-purple { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,.25); }
+    .badge-red    { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,.25); }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .project-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .progress-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: var(--bg-glass);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width .6s ease;
+    }
+    .fill-green  { background: var(--green); }
+    .fill-yellow { background: var(--yellow); }
+    .fill-blue   { background: var(--accent); }
+    .fill-purple { background: var(--purple); }
+    .progress-pct {
+      font-size: 12px;
+      font-weight: 600;
+      min-width: 36px;
+      text-align: right;
+    }
+    .monthly-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .monthly-pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .monthly-pill span { color: var(--text-primary); font-weight: 700; }
+
+    /* ── TIMELINE TABLE ── */
+    .table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead th {
+      background: var(--bg-glass);
+      color: var(--text-secondary);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--bg-glass); }
+    tbody td {
+      padding: 11px 16px;
+      vertical-align: middle;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .td-muted { color: var(--text-secondary); font-size: 12px; }
+    .pill-p0   { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,.2); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+    .pill-p1   { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(251,191,36,.2); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+    .pill-p2   { background: var(--blue-dim); color: var(--accent); border: 1px solid rgba(79,142,247,.2); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+    .pill-p3   { background: var(--bg-glass); color: var(--text-secondary); border: 1px solid var(--border); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; display: inline-block; }
+    .status-done    { color: var(--green); font-size: 12px; font-weight: 600; }
+    .status-doing   { color: var(--yellow); font-size: 12px; font-weight: 600; }
+    .status-todo    { color: var(--text-muted); font-size: 12px; font-weight: 500; }
+    .status-block   { color: var(--red); font-size: 12px; font-weight: 600; }
+
+    /* ── BUDGET TABLE ── */
+    .budget-total {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    /* ── TEAM SECTION ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .team-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .team-role {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .team-tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .team-task {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 3px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .team-task:last-child { border-bottom: none; }
+
+    /* ── FOOTER ── */
+    .footer {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .page-header { flex-direction: column; align-items: flex-start; }
+      .project-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div class="header-left">
+    <h1>Thái Hòa Travel — Báo Cáo Dự Án</h1>
+    <p>Bùi Thị Huế · Tháng 5 – 7 / 2026 · Cập nhật 09/06/2026</p>
+  </div>
+  <div class="header-meta">
+    <span class="meta-chip accent">3h / ngày</span>
+    <span class="meta-chip">T2 – T7</span>
+    <span class="meta-chip">Thứ 6 họp cố định</span>
+    <span class="meta-chip">5 dự án chính</span>
+  </div>
+</header>
+
+<!-- KPI TỔNG QUAN -->
+<section class="section">
+  <div class="section-title">Tổng quan tiến độ</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="label">Video đã duyệt</div>
+      <div class="value c-green">20</div>
+      <div class="sub">/ 180 mục tiêu T5–T7</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Kịch bản viết xong</div>
+      <div class="value c-blue">86</div>
+      <div class="sub">Voice anh Duy thu: 40/86 · Cần thêm 94 KB</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Bài xe (Gđ 1)</div>
+      <div class="value c-yellow">20</div>
+      <div class="sub">/ 180 bài · 1 bài/ngày</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Kho hình xe</div>
+      <div class="value c-yellow">80</div>
+      <div class="sub">/ 200 · Chưa xử lý nét</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Zalo OA</div>
+      <div class="value c-blue">0</div>
+      <div class="sub">/ 30 bài · Bắt đầu 1/7</div>
+    </div>
+  </div>
+</section>
+
+<!-- DỰ ÁN -->
+<section class="section">
+  <div class="section-title">Chi tiết dự án</div>
+  <div class="project-grid">
+
+    <!-- DA1 -->
+    <div class="project-card">
+      <div class="project-card-header">
+        <div class="project-title">DA1 · Sản xuất 180 Video TikTok/Facebook</div>
+        <span class="project-badge badge-yellow">ĐANG CHẠY</span>
+      </div>
+      <div class="project-desc">
+        PM toàn bộ: tuyển CTV, viết kịch bản, push anh Duy thu voice, duyệt video, lên plan đăng.<br><br>
+        Ngân sách: <strong>100,000đ/video</strong> cho CTV · <strong>10,000đ/caption</strong> cho Ngọc.<br>
+        Tổng cần: 180 video + 180 caption + 180 voice.
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">Tiến độ video (20/180)</div>
+        <div class="progress-row">
+          <div class="progress-bar-wrap"><div class="progress-bar-fill fill-yellow" style="width:11%"></div></div>
+          <span class="progress-pct c-yellow">11%</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">Kịch bản (86/180) · Voice thu: 40/86</div>
+        <div class="progress-row">
+          <div class="progress-bar-wrap"><div class="progress-bar-fill fill-blue" style="width:48%"></div></div>
+          <span class="progress-pct c-blue">48%</span>
+        </div>
+      </div>
+      <div class="monthly-pills">
+        <div class="monthly-pill">T5 ✅ <span>20 video</span></div>
+        <div class="monthly-pill">T6 🎯 <span>60 video · 10 đăng</span></div>
+        <div class="monthly-pill">T7 🎯 <span>100 video</span></div>
+      </div>
+    </div>
+
+    <!-- DA2 -->
+    <div class="project-card">
+      <div class="project-card-header">
+        <div class="project-title">DA2 · Fanpage Xe — 180 Bài Viết</div>
+        <span class="project-badge badge-yellow">ĐANG CHẠY</span>
+      </div>
+      <div class="project-desc">
+        Ngọc viết bài · Huế duyệt + plan đăng (1 bài/ngày).<br>
+        Ngân sách: <strong>20,000đ/bài</strong>.<br><br>
+        Song song: Xây kho hình 200 ảnh (xe + tài xế) từ đối tác và tour cũ. Xử lý nét cuốn chiếu đến 30/7.
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">Tiến độ bài (20/180)</div>
+        <div class="progress-row">
+          <div class="progress-bar-wrap"><div class="progress-bar-fill fill-green" style="width:11%"></div></div>
+          <span class="progress-pct c-green">11%</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">Kho hình (80/200)</div>
+        <div class="progress-row">
+          <div class="progress-bar-wrap"><div class="progress-bar-fill fill-yellow" style="width:40%"></div></div>
+          <span class="progress-pct c-yellow">40%</span>
+        </div>
+      </div>
+      <div class="monthly-pills">
+        <div class="monthly-pill">T5 ✅ <span>20 bài</span></div>
+        <div class="monthly-pill">T6 🎯 <span>70 bài</span></div>
+        <div class="monthly-pill">T7 🎯 <span>90 bài</span></div>
+      </div>
+    </div>
+
+    <!-- DA3 -->
+    <div class="project-card">
+      <div class="project-card-header">
+        <div class="project-title">DA3 · Fanpage Du Lịch THT — 3 Nhóm Bài</div>
+        <span class="project-badge badge-blue">TRIỂN KHAI</span>
+      </div>
+      <div class="project-desc">
+        Ngọc viết cả 3 nhóm · Huế duyệt + plan đăng (1 bài/ngày/nhóm).<br>
+        Mẫu bài + hình bàn giao Ngọc <strong>3/6</strong>.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:4px;">Nhóm 1 — Sửa bài spam</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">365 bài · 10,000đ/bài · 1 bài/ngày</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="flex:1;height:5px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;">
+              <div style="width:16%;height:100%;background:var(--green);border-radius:999px;"></div>
+            </div>
+            <span style="font-size:11px;font-weight:700;color:var(--green);">60/365</span>
+          </div>
+        </div>
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:2px;">Nhóm 2 — Bài mới tổng quan</div>
+          <div style="font-size:11px;color:var(--text-muted);">365 bài · 20,000đ/bài · 1 bài/ngày</div>
+        </div>
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:2px;">Nhóm 3 — Bài mới text trend</div>
+          <div style="font-size:11px;color:var(--text-muted);">365 bài · 20,000đ/bài · 1 bài/ngày</div>
+        </div>
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:4px;">Nhóm 4 — Caption + seeding cho video</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">180 bài · 10,000đ/bài · 1 bài/video</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="flex:1;height:5px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden;">
+              <div style="width:0%;height:100%;background:var(--accent);border-radius:999px;"></div>
+            </div>
+            <span style="font-size:11px;font-weight:700;color:var(--accent);">0/180</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA4 -->
+    <div class="project-card">
+      <div class="project-card-header">
+        <div class="project-title">DA4 · Holiday Content Thái Hòa Travel</div>
+        <span class="project-badge badge-red">CHỜ INPUT</span>
+      </div>
+      <div class="project-desc">
+        Quỳnh làm content · Chị Hòa gửi chương trình giá · Huế duyệt.<br>
+        Kênh phủ: website (bài + hình), Facebook, Zalo OA.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:2px;">Nhóm 1 — Lễ quan trọng</div>
+          <div style="font-size:11px;color:var(--text-muted);">Tết ta, Tết Tây/Noel, 2/9, Giỗ Tổ/30-4 · Có mẫu · Đang chờ c.Hòa gửi CT dịp 2/9</div>
+        </div>
+        <div style="background:var(--bg-glass);border:1px solid var(--border);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:2px;">Nhóm 2 — 4 Dịp du lịch đặc thù</div>
+          <div style="font-size:11px;color:var(--text-muted);">Tour hè · Mùa thu · Trượt tuyết · Hoa anh đào · Họp 15/7 với anh Thịnh → brief Quỳnh</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA5 -->
+    <div class="project-card">
+      <div class="project-card-header">
+        <div class="project-title">DA5 · Zalo OA Thái Hòa — 30 Bài</div>
+        <span class="project-badge badge-purple">SẮP BẮT ĐẦU</span>
+      </div>
+      <div class="project-desc">
+        Nhi viết bài · Quỳnh order hình + đăng · Huế check duyệt.<br>
+        Lịch đăng: <strong>15 bài/tháng</strong> · Bắt đầu <strong>1/7/2026</strong>.
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">Tiến độ (0/30)</div>
+        <div class="progress-row">
+          <div class="progress-bar-wrap"><div class="progress-bar-fill fill-purple" style="width:0%"></div></div>
+          <span class="progress-pct c-purple">0%</span>
+        </div>
+      </div>
+      <div class="monthly-pills">
+        <div class="monthly-pill">T6 🎯 <span>Chuẩn bị 15 bài</span></div>
+        <div class="monthly-pill">T7 🎯 <span>Đăng 15 bài/tháng</span></div>
+      </div>
+    </div>
+
+    <!-- DAP -->
+    <div class="project-card">
+      <div class="project-card-header">
+        <div class="project-title">DAP · OOH / Thiết kế ngoại thất</div>
+        <span class="project-badge badge-green">HOÀN THÀNH</span>
+      </div>
+      <div class="project-desc">
+        Thiết kế tài liệu truyền thông ngoại thất cho 3 cơ sở.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--green-dim);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--green);margin-bottom:2px;">✅ Thái Hòa Travel · Hoàn thành 28/5</div>
+          <div style="font-size:11px;color:var(--text-muted);">1 bảng hiệu · 2 banner cánh cửa · 2 banner trang trí</div>
+        </div>
+        <div style="background:var(--green-dim);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--green);margin-bottom:2px;">✅ Hàng Thái Chính Hãng · Hoàn thành 1/6</div>
+          <div style="font-size:11px;color:var(--text-muted);">Bảng chỉ đường · Hộp đèn</div>
+        </div>
+        <div style="background:var(--green-dim);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 12px;">
+          <div style="font-size:11px;font-weight:600;color:var(--green);margin-bottom:2px;">✅ Moto Cafe · Hoàn thành</div>
+          <div style="font-size:11px;color:var(--text-muted);">1 banner tuyển dụng · 4 banner tên công ty · 6 tiếng</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE THÁNG -->
+<section class="section">
+  <div class="section-title">Kế hoạch theo tháng</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dự án</th>
+          <th>Tháng 5 (09–31/5)</th>
+          <th>Tháng 6 (01–30/6)</th>
+          <th>Tháng 7 (01–30/7)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DA1 · Video</strong></td>
+          <td><span class="status-done">✅ Tuyển 5 CTV · Duyệt 20 video · 19 KB mới</span></td>
+          <td><span class="status-doing">🔄 Duyệt 60 video · Viết 34 KB · Đăng 10 video (plan 10/6)</span></td>
+          <td><span class="status-todo">⏳ Đạt 180 video · Tiếp tục đăng</span></td>
+        </tr>
+        <tr>
+          <td><strong>DA2 · Bài xe</strong></td>
+          <td><span class="status-done">✅ 20 bài · 80 hình (chưa xử lý)</span></td>
+          <td><span class="status-doing">🔄 70 bài · Xử lý kho hình cuốn chiếu</span></td>
+          <td><span class="status-todo">⏳ 90 bài → tổng 180 · Kho hình xong 30/7</span></td>
+        </tr>
+        <tr>
+          <td><strong>DA3 · Fanpage THT</strong></td>
+          <td><span class="status-done">✅ Lên mẫu + hình, bàn giao Ngọc 3/6</span></td>
+          <td><span class="status-doing">🔄 3 nhóm · 1 bài/ngày/nhóm</span></td>
+          <td><span class="status-todo">⏳ Duy trì nhịp · 1 bài/ngày/nhóm</span></td>
+        </tr>
+        <tr>
+          <td><strong>DA4 · Holiday</strong></td>
+          <td><span class="status-done">✅ Duyệt holiday Quỳnh: 2/9 · 20/10</span></td>
+          <td><span class="status-doing">🔄 Sale 11.11 · Ngày Nhà giáo 20/11 · Black Friday</span></td>
+          <td><span class="status-todo">⏳ Giáng sinh · Tết Dương lịch 2027 · Tết Nguyên đán 2027</span></td>
+        </tr>
+        <tr>
+          <td><strong>Quỳnh · Deliverables</strong></td>
+          <td><span class="status-done">✅ Hoàn thành bộ content 2/9 + 20/10 (website · FB · Zalo OA)</span></td>
+          <td><span class="status-doing">🔄 Làm 11.11 · 20/11 · Black Friday · HTCH holiday (02/09 · 20/10 · 11.11)</span></td>
+          <td><span class="status-todo">⏳ Giáng sinh · Tết DL · Tết ÂL · Zalo OA 15 bài/tháng</span></td>
+        </tr>
+        <tr>
+          <td><strong>DA5 · Zalo OA</strong></td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+          <td><span class="status-doing">🔄 Chuẩn bị 15 bài (Nhi viết + Quỳnh hình)</span></td>
+          <td><span class="status-todo">⏳ Đăng 15 bài · Kick-off 1/7</span></td>
+        </tr>
+        <tr>
+          <td><strong>CĐ · Nghiệm thu</strong></td>
+          <td><span class="status-done">✅ Nghiệm thu CTV T5 (trước 5/6)</span></td>
+          <td><span class="status-doing">🔄 Nghiệm thu CTV T6 (trước 5/7)</span></td>
+          <td><span class="status-todo">⏳ Nghiệm thu CTV T7 (trước 5/8)</span></td>
+        </tr>
+        <tr>
+          <td><strong>CĐ · HTCH</strong></td>
+          <td><span class="status-done">✅ Plan content T5 · Concept 02/09 · 20/10 · 11.11 đã duyệt xong</span></td>
+          <td><span class="status-doing">🔄 Plan content T6 · Nghiệm thu bài Quỳnh: 02/09 · 20/10 · 11.11</span></td>
+          <td><span class="status-todo">⏳ Plan content T7 · Nghiệm thu bài Quỳnh hoàn chỉnh</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TASK LIST -->
+<section class="section">
+  <div class="section-title">Danh sách task chi tiết</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Nhóm</th>
+          <th>Ưu tiên</th>
+          <th>Đầu việc</th>
+          <th>Mô tả</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-muted">N1</td>
+          <td><span class="pill-p0">P0</span></td>
+          <td>Hồ sơ CCCD CTV</td>
+          <td class="td-muted">Thu thập CCCD từ CTV, đính kèm, gửi mail chị Trang</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N8</td>
+          <td><span class="pill-p0">P0</span></td>
+          <td>Push anh Duy thu voice 180 kịch bản THT</td>
+          <td class="td-muted">Gửi kịch bản, yêu cầu lịch thu voice cụ thể · Đã thu 40/180</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N8</td>
+          <td><span class="pill-p0">P0</span></td>
+          <td>Viết JD + đăng tuyển 3 CTV edit video</td>
+          <td class="td-muted">Viết mô tả công việc, đăng ≥3 group tuyển dụng</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N1</td>
+          <td><span class="pill-p0">P0</span></td>
+          <td>Báo cáo nghiệm thu CTV tháng 5</td>
+          <td class="td-muted">Tổng hợp số lượng, gửi trước ngày 5/6</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N1</td>
+          <td><span class="pill-p0">P0</span></td>
+          <td>Báo cáo nghiệm thu CTV tháng 6</td>
+          <td class="td-muted">Tổng hợp số lượng, gửi trước ngày 5/7</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N8+9</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Outro TikTok kênh Thái Hòa Travel</td>
+          <td class="td-muted">Thiết kế outro chuẩn thương hiệu cho kênh THT</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N2</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Brief Holiday Hè cho Quỳnh triển khai</td>
+          <td class="td-muted">Viết brief đầy đủ sau chị Hòa duyệt</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N3</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Xây dựng rule + tuyến content bài xe</td>
+          <td class="td-muted">File vận hành AI bài xe: rule, tuyến, bài mẫu</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N3</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>File gửi chị Hòa xin hình xe</td>
+          <td class="td-muted">Soạn file + hướng dẫn tài xế/đối tác cung cấp hình</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N4</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Nghiên cứu + Viết bài mẫu Tour mới</td>
+          <td class="td-muted">Xác định tuyến trụ cột, viết 2–3 bài mẫu</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N4</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Brief Tour mới cho Ngọc + Plan đăng bài T6</td>
+          <td class="td-muted">Giao brief Ngọc, lên lịch đăng tháng 6</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N7</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Plan content Hàng Thái Chính Hãng tháng 6</td>
+          <td class="td-muted">Sản phẩm chủ lực, tồn kho, trend, tuyến nội dung</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N8</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Viết 30 kịch bản tour chủ lực TikTok THT</td>
+          <td class="td-muted">30 kịch bản mới bổ sung (6 đợt × 5 kịch bản)</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">DA4</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Họp anh Thịnh — lên idea 4 dịp đặc thù</td>
+          <td class="td-muted">Tour hè · Mùa thu · Trượt tuyết · Hoa anh đào → brief Quỳnh</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu · Ngày 15/7</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N1</td>
+          <td><span class="pill-p1">P1</span></td>
+          <td>Họp định hướng Thái Hòa Travel 2026</td>
+          <td class="td-muted">Định hướng chiến lược THT năm 2026</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N1</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Họp tuần thứ 6</td>
+          <td class="td-muted">Cố định mỗi T6, 3h</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N1</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Check nghiệm thu thả tim Zalo</td>
+          <td class="td-muted">Xác nhận CTV hoàn thành công việc</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N8</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Check video CTV (batch 3–5 video)</td>
+          <td class="td-muted">Xem video, feedback, yêu cầu sửa</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N4</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Check bài Ngọc viết</td>
+          <td class="td-muted">Review bài tour, feedback, duyệt</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N2</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Check sản phẩm Quỳnh (holiday+HTCH)</td>
+          <td class="td-muted">Review visual, content, ảnh Quỳnh làm</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N8</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Lên plan đăng video TikTok + Facebook</td>
+          <td class="td-muted">Lịch đăng video hàng tuần cho 2 kênh</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N4</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Order Ngọc viết caption video theo rule</td>
+          <td class="td-muted">Gửi brief caption, check kết quả</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">DA5</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Check duyệt bài Zalo OA</td>
+          <td class="td-muted">Nhi viết → Huế duyệt 15 bài/tháng · Bắt đầu tháng 7</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu · Kick-off 1/7</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">DA5</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Lên plan đăng Zalo OA</td>
+          <td class="td-muted">Lịch đăng 15 bài/tháng · Giao Quỳnh đăng theo plan</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu · Kick-off 1/7</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N5</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>OOH cửa hàng (3 vị trí, 6 file)</td>
+          <td class="td-muted">Nhận kích thước Thịnh → thiết kế 6 file OOH</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N5</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Dẫn thợ đo kích thước + nghiệm thu OOH</td>
+          <td class="td-muted">Đi cùng thợ đo kích thước thực tế · Hỗ trợ anh Thịnh nghiệm thu 5 hạng mục OOH</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N5</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Chụp hình cửa hàng gửi Ngọc đăng Google</td>
+          <td class="td-muted">Chụp ảnh thực tế cửa hàng → gửi Ngọc cập nhật Google Business</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N3</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Xây dựng kho hình xe</td>
+          <td class="td-muted">Thu thập hình từ tour cũ + đối tác, tổ chức kho</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N7</td>
+          <td><span class="pill-p2">P2</span></td>
+          <td>Bổ sung content CT tăng giá RTH – HTCH</td>
+          <td class="td-muted">Chị Hòa yêu cầu 15/5 · Order Quỳnh làm 4 hình mới + 7 bài viết · Đẩy Social fanpage + Zalo tệp khách mua tặng</td>
+          <td><span class="status-done">✅ Hoàn thành</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N7</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Plan content HTCH tháng 7</td>
+          <td class="td-muted">Lên plan content HTCH T7, dùng template T6</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N10</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Check 3 holiday HTCH (02/09, 20/10, 11.11)</td>
+          <td class="td-muted">Viết brief concept khung 3 dịp cho Quỳnh</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N3</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Lên plan bài xe cho 2 page</td>
+          <td class="td-muted">Plan đăng bài xe T7 cho page chính + page xe</td>
+          <td><span class="status-doing">🔄 Đang làm</span></td>
+        </tr>
+        <tr>
+          <td class="td-muted">N10</td>
+          <td><span class="pill-p3">P3</span></td>
+          <td>Check bản nháp Quỳnh – holiday HTCH</td>
+          <td class="td-muted">Review bản nháp 02/09, 20/10, 11.11 của Quỳnh</td>
+          <td><span class="status-todo">⏳ Chưa bắt đầu</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ĐỘI NGŨ -->
+<section class="section">
+  <div class="section-title">Phân công đội ngũ</div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-name c-blue">Bùi Thị Huế <span style="font-size:11px;color:var(--text-muted);">(PM)</span></div>
+      <div class="team-role">Project Manager · 3h/ngày</div>
+      <div class="team-tasks">
+        <div class="team-task">Viết kịch bản video</div>
+        <div class="team-task">Duyệt video, bài viết, content</div>
+        <div class="team-task">Lên plan đăng tất cả kênh</div>
+        <div class="team-task">Brief + quản lý Ngọc / Quỳnh / Nhi</div>
+        <div class="team-task">Quản lý kho hình</div>
+        <div class="team-task">Nghiệm thu CTV hàng tháng</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-name c-green">Ngọc</div>
+      <div class="team-role">Content Writer</div>
+      <div class="team-tasks">
+        <div class="team-task">Bài xe (180 bài)</div>
+        <div class="team-task">Fanpage THT – 3 nhóm</div>
+        <div class="team-task">Caption video (180 bài)</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-name c-yellow">Quỳnh</div>
+      <div class="team-role">Design / Content</div>
+      <div class="team-tasks">
+        <div class="team-task">Holiday content HTCH</div>
+        <div class="team-task">Holiday content THT</div>
+        <div class="team-task">Zalo OA (order hình + đăng)</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-name c-purple">Nhi</div>
+      <div class="team-role">Content / Đăng bài</div>
+      <div class="team-tasks">
+        <div class="team-task">Kịch bản video (60 KB)</div>
+        <div class="team-task">Zalo OA (15 bài/tháng)</div>
+        <div class="team-task">Đăng: Google, Fanpage THT, Page Xe, TikTok</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-name" style="color:var(--red);">5 CTV Edit Video</div>
+      <div class="team-role">Gia Bảo · T.Thịnh · Khôi Bùi · Q.Huy · V.Kiên</div>
+      <div class="team-tasks">
+        <div class="team-task">Edit video (180 video · 100k/video)</div>
+        <div class="team-task">Tuyển xong: 20/5/2026</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-name" style="color:var(--text-secondary);">Chị Hòa</div>
+      <div class="team-role">Quản lý / Input</div>
+      <div class="team-tasks">
+        <div class="team-task">Gửi chương trình giá holiday</div>
+        <div class="team-task">Đăng Zalo Thái Hòa Travel</div>
+        <div class="team-task">Cung cấp hình xe / tài xế</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NGÂN SÁCH -->
+<section class="section">
+  <div class="section-title">Tổng hợp ngân sách CTV</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dự án</th>
+          <th>Loại</th>
+          <th>Người làm</th>
+          <th>T5</th>
+          <th>T6</th>
+          <th>T7</th>
+          <th>Tổng</th>
+          <th>Đơn giá</th>
+          <th>Ngân sách</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DA1</strong></td>
+          <td>Video edit</td>
+          <td class="td-muted">5 CTV</td>
+          <td>20</td><td>60</td><td>100</td>
+          <td><strong>180</strong></td>
+          <td>100,000đ</td>
+          <td class="budget-total">18,000,000đ</td>
+        </tr>
+        <tr>
+          <td><strong>DA1</strong></td>
+          <td>Caption + seeding</td>
+          <td class="td-muted">Ngọc</td>
+          <td>—</td><td>20</td><td>160</td>
+          <td><strong>180</strong></td>
+          <td>10,000đ</td>
+          <td class="budget-total">1,800,000đ</td>
+        </tr>
+        <tr>
+          <td><strong>DA2</strong></td>
+          <td>Bài viết xe</td>
+          <td class="td-muted">Ngọc</td>
+          <td>20</td><td>70</td><td>90</td>
+          <td><strong>180</strong></td>
+          <td>20,000đ</td>
+          <td class="budget-total">3,600,000đ</td>
+        </tr>
+        <tr>
+          <td><strong>DA3-N1</strong></td>
+          <td>Sửa bài spam</td>
+          <td class="td-muted">Ngọc</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td><strong>365</strong></td>
+          <td>10,000đ</td>
+          <td class="budget-total">3,650,000đ</td>
+        </tr>
+        <tr>
+          <td><strong>DA3-N2</strong></td>
+          <td>Bài mới tổng quan</td>
+          <td class="td-muted">Ngọc</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td><strong>365</strong></td>
+          <td>20,000đ</td>
+          <td class="budget-total">7,300,000đ</td>
+        </tr>
+        <tr>
+          <td><strong>DA3-N3</strong></td>
+          <td>Bài mới text trend</td>
+          <td class="td-muted">Ngọc</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td><strong>365</strong></td>
+          <td>20,000đ</td>
+          <td class="budget-total">7,300,000đ</td>
+        </tr>
+        <tr>
+          <td><strong>DA4</strong></td>
+          <td>Holiday content</td>
+          <td class="td-muted">Quỳnh</td>
+          <td>—</td><td>—</td><td>—</td>
+          <td><strong>8 dịp</strong></td>
+          <td>1,280,000đ</td>
+          <td class="budget-total">10,240,000đ</td>
+        </tr>
+        <tr style="background:var(--bg-glass);">
+          <td colspan="8" style="text-align:right;font-weight:700;color:var(--text-secondary);">Tổng ngân sách CTV (T5–T7)</td>
+          <td class="budget-total" style="font-size:15px;">51,890,000đ</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="footer">
+  Bùi Thị Huế · Thái Hòa Travel · Báo cáo dự án T5–T7/2026 · Cập nhật 09/06/2026
+</footer>
+
+</body>
+</html>
