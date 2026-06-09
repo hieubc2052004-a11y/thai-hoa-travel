@@ -81,18 +81,26 @@
     /* ── SECTION ── */
     .section {
       max-width: 1200px;
-      margin: 0 auto 36px;
+      margin: 0 auto 40px;
     }
     .section-title {
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-secondary);
+      letter-spacing: 0.12em;
+      color: #c90006;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: '';
+      width: 3px;
+      height: 14px;
+      background: #c90006;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
     .section-title::after {
       content: '';
@@ -146,12 +154,16 @@
     .project-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
+      border-top: 3px solid #c90006;
       border-radius: var(--radius);
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow .2s;
     }
+    .project-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
     .project-card-header {
       display: flex;
       align-items: flex-start;
@@ -233,6 +245,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     table {
       width: 100%;
@@ -240,22 +253,22 @@
       font-size: 13px;
     }
     thead th {
-      background: var(--bg-glass);
-      color: var(--text-secondary);
-      font-size: 11px;
-      font-weight: 600;
+      background: #1a1d23;
+      color: #9ca3af;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.10em;
       padding: 12px 16px;
       text-align: left;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid #c90006;
     }
     tbody tr {
       border-bottom: 1px solid var(--border);
       transition: background .15s;
     }
     tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: var(--bg-glass); }
+    tbody tr:hover { background: rgba(201,0,6,0.03); }
     tbody td {
       padding: 11px 16px;
       vertical-align: middle;
@@ -288,8 +301,10 @@
     .team-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
+      border-left: 3px solid #c90006;
       border-radius: var(--radius);
       padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
     .team-name {
       font-size: 14px;
