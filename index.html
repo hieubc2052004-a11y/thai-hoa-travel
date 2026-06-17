@@ -117,27 +117,72 @@
     /* ── KPI CARDS ── */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 14px;
     }
     .kpi-card {
       background: #360602;
       border: 1px solid #550a04;
       border-radius: var(--radius);
-      padding: 20px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
     .kpi-card .label {
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: #f99e96;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .kpi-card .value {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 800;
       line-height: 1;
+      margin-bottom: 4px;
+    }
+    .kpi-card .kpi-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 10px 0;
+    }
+    .kpi-card .sub-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 5px;
+    }
+    .kpi-card .kpi-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 3px;
+    }
+    .kpi-card .kpi-row span.val {
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+    }
+    .kpi-card .multi-vals {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .kpi-card .multi-item {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+    }
+    .kpi-card .multi-item .num {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      display: block;
     }
     .kpi-card .sub {
       font-size: 12px;
@@ -423,37 +468,63 @@
 <section class="section">
   <div class="section-title">Tổng quan tiến độ</div>
   <div class="kpi-grid">
+
+    <!-- CỤC 1: VIDEO -->
     <div class="kpi-card">
-      <div class="label">Video đã duyệt</div>
-      <div class="value c-green">32</div>
-      <div class="sub">/ 180 mục tiêu T5–T7</div>
+      <div class="label">Video đã đăng</div>
+      <div class="value c-green">4</div>
+      <div class="kpi-divider"></div>
+      <div class="sub-label">Đã sản xuất</div>
+      <div class="kpi-row"><span>Video duyệt</span><span class="val c-yellow">32 / 180</span></div>
     </div>
+
+    <!-- CỤC 2: VOICE / KB -->
     <div class="kpi-card">
-      <div class="label">Kịch bản viết xong</div>
-      <div class="value c-blue">86</div>
-      <div class="sub">Voice anh Duy thu: 40/86 · Cần thêm 94 KB</div>
+      <div class="label">Voice đã thu</div>
+      <div class="value c-blue">40</div>
+      <div class="kpi-divider"></div>
+      <div class="sub-label">Kịch bản</div>
+      <div class="kpi-row"><span>Đã viết</span><span class="val c-yellow">86 / 180</span></div>
     </div>
+
+    <!-- CỤC 3: FANPAGE + TIKTOK -->
     <div class="kpi-card">
-      <div class="label">Bài xe (Gđ 1)</div>
-      <div class="value c-yellow">20</div>
-      <div class="sub">/ 180 bài · 1 bài/ngày</div>
+      <div class="label">Nội dung đã đăng</div>
+      <div class="multi-vals">
+        <div class="multi-item"><span class="num c-yellow">15</span>Fanpage xe</div>
+        <div class="multi-item"><span class="num c-green">30</span>Fanpage DL</div>
+        <div class="multi-item"><span class="num c-blue">5</span>TikTok</div>
+      </div>
+      <div class="kpi-divider"></div>
+      <div class="sub-label">Đã sản xuất / Mục tiêu</div>
+      <div class="kpi-row"><span>Fanpage xe</span><span class="val">20 / 180</span></div>
+      <div class="kpi-row"><span>Fanpage DL</span><span class="val">84 / —</span></div>
+      <div class="kpi-row"><span>Video TikTok</span><span class="val">24 / 540</span></div>
     </div>
+
+    <!-- CỤC 4: ZALO OA -->
     <div class="kpi-card">
-      <div class="label">Kho hình xe</div>
-      <div class="value c-yellow">80</div>
-      <div class="sub">/ 200 · Chưa xử lý nét</div>
-    </div>
-    <div class="kpi-card">
-      <div class="label">Zalo OA</div>
+      <div class="label">Zalo OA đã đăng</div>
       <div class="value c-blue">0</div>
-      <div class="sub">/ 30 bài · Bắt đầu 1/7</div>
+      <div class="kpi-divider"></div>
+      <div class="sub-label">Sản xuất</div>
+      <div class="kpi-row"><span>Bài viết</span><span class="val c-yellow">10 / 90</span></div>
     </div>
+
+    <!-- CỤC 5: SEEDING -->
     <div class="kpi-card">
-      <div class="label">Seeding Google Maps</div>
-      <div class="value c-yellow">0</div>
-      <div class="sub">Đã triển khai / 100 mục tiêu</div>
-      <div class="sub" style="margin-top:4px;">Sản xuất: 100 ✅ · Đã duyệt: 10</div>
+      <div class="label">Seeding đã đăng</div>
+      <div class="multi-vals">
+        <div class="multi-item"><span class="num c-yellow">0</span>CTV</div>
+        <div class="multi-item"><span class="num c-blue">0</span>CSKH</div>
+      </div>
+      <div class="kpi-divider"></div>
+      <div class="sub-label">Chi tiết</div>
+      <div class="kpi-row"><span>Trả lời map</span><span class="val">0</span></div>
+      <div class="kpi-row"><span>Đã duyệt</span><span class="val c-yellow">10</span></div>
+      <div class="kpi-row"><span>Đã sản xuất</span><span class="val c-green">100</span></div>
     </div>
+
   </div>
 </section>
 
