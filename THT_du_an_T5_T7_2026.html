@@ -195,6 +195,34 @@
     .c-purple { color: var(--purple); }
     .c-red    { color: var(--red); }
 
+    /* ── KPI SUMMARY MEGA CARD ── */
+    .kpi-summary {
+      grid-column: 1 / -1;
+      background: #110100;
+      border: 1px solid #831006;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .kpi-summary .summary-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f99e96;
+      margin-bottom: 16px;
+    }
+    .kpi-summary .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px 20px;
+    }
+    .sum-item { display: flex; flex-direction: column; gap: 2px; }
+    .sum-item .s-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); }
+    .sum-item .s-value { font-size: 26px; font-weight: 800; line-height: 1; }
+    .sum-item .s-sub { font-size: 10px; color: rgba(255,255,255,0.38); margin-top: 1px; }
+    .kpi-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-top: 5px; overflow: hidden; }
+    .kpi-bar .bar { height: 100%; border-radius: 2px; }
+
     /* ── PROJECT CARDS ── */
     .project-grid {
       display: grid;
@@ -472,6 +500,77 @@
   <div class="section-title">Tổng quan tiến độ</div>
   <div class="kpi-grid">
 
+    <!-- MEGA CARD: TỔNG QUAN NHANH -->
+    <div class="kpi-summary">
+      <div class="summary-title">Chỉ số chính theo dự án</div>
+      <div class="summary-grid">
+
+        <div class="sum-item">
+          <div class="s-label">DA1 · Video SX</div>
+          <div class="s-value c-yellow">32</div>
+          <div class="s-sub">/ 180 mục tiêu</div>
+          <div class="kpi-bar"><div class="bar" style="width:18%;background:#e08e30;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA2 · Fanpage Xe</div>
+          <div class="s-value c-yellow">20</div>
+          <div class="s-sub">/ 180 bài</div>
+          <div class="kpi-bar"><div class="bar" style="width:11%;background:#e08e30;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA3 · Fanpage DL</div>
+          <div class="s-value c-green">84</div>
+          <div class="s-sub">bài đã đăng</div>
+          <div class="kpi-bar"><div class="bar" style="width:100%;background:#22c55e;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA4 · Holiday</div>
+          <div class="s-value c-yellow">1</div>
+          <div class="s-sub">/ 4 dịp lễ đăng</div>
+          <div class="kpi-bar"><div class="bar" style="width:25%;background:#e08e30;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA5 · Zalo OA</div>
+          <div class="s-value c-green">30</div>
+          <div class="s-sub">/ 90 content SX</div>
+          <div class="kpi-bar"><div class="bar" style="width:33%;background:#22c55e;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA6 · Seeding Maps</div>
+          <div class="s-value" style="color:rgba(255,255,255,0.45);">10</div>
+          <div class="s-sub">/ 100 duyệt</div>
+          <div class="kpi-bar"><div class="bar" style="width:10%;background:#e04e3a;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA7 · Duy Muôn Nơi</div>
+          <div class="s-value c-yellow">5</div>
+          <div class="s-sub">/ 30 kịch bản</div>
+          <div class="kpi-bar"><div class="bar" style="width:17%;background:#e08e30;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA8 · Nhận diện</div>
+          <div class="s-value c-yellow">2</div>
+          <div class="s-sub">/ 7 hạng mục xong</div>
+          <div class="kpi-bar"><div class="bar" style="width:29%;background:#e08e30;"></div></div>
+        </div>
+
+        <div class="sum-item">
+          <div class="s-label">DA9 · Rổ Niềm Tin</div>
+          <div class="s-value" style="color:rgba(255,255,255,0.35);">0</div>
+          <div class="s-sub">/ 5 nhóm (Q3)</div>
+          <div class="kpi-bar"><div class="bar" style="width:0%;background:#e04e3a;"></div></div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- CỤC 1: VIDEO -->
     <div class="kpi-card">
       <div class="label">Video đã sản xuất</div>
@@ -528,6 +627,17 @@
       <div class="kpi-row"><span>Trả lời map</span><span class="val">0</span></div>
       <div class="kpi-row"><span>Đã duyệt</span><span class="val c-yellow">10</span></div>
       <div class="kpi-row"><span>Đã sản xuất</span><span class="val c-green">100</span></div>
+    </div>
+
+    <!-- CỤC 9: RỔ NIỀM TIN Q3 -->
+    <div class="kpi-card">
+      <div class="label">Rổ Niềm Tin — Q3</div>
+      <div class="value" style="color:rgba(255,255,255,0.4);">0</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;margin-bottom:0;">/ 5 nhóm KH triển khai</div>
+      <div class="kpi-divider"></div>
+      <div class="sub-label">Kế hoạch</div>
+      <div class="kpi-row"><span>Nhóm đã xây xong</span><span class="val c-green">5 / 5</span></div>
+      <div class="kpi-row"><span>Chiến dịch đang chạy</span><span class="val">0 / 5</span></div>
     </div>
 
     <!-- CỤC 7: DUY ĐI MUÔN NƠI -->
